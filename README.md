@@ -24,7 +24,12 @@ to uncover insights related to business performance, safety, maintenance, and ro
 - Matplotlib, Seaborn
 - SciPy / Statsmodels
 
-## Key Takeaways
+## Key Questions
+This analysis aims to answer the following questions:
+- Are there observable patterns related to safety incidents?
+- What factors appear to influence maintenance needs?
+- How do trips and routes differ in terms of usage and performance?
+- Are the observed differences statistically meaningful?
 
 ## Next Steps
 - Feature engineering
