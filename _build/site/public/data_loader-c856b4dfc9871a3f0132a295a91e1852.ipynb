@@ -1,0 +1,280 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3b2bd6b-084f-499f-b721-b7333a326b9e",
+   "metadata": {
+    "editable": true,
+    "slideshow": {
+     "slide_type": ""
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "import kagglehub\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "80745f26-39fc-4c2f-ac5f-596ab57ec7a2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Set the default figure size\n",
+    "plt.rcParams['figure.figsize'] = (10, 6)\n",
+    "sns.set(color_codes = True)\n",
+    "pd.set_option('display.width', 1200)\n",
+    "pd.set_option('display.max_columns', None)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "550c6b9c-f1ff-48ac-92aa-72188a8394e7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Path to dataset files: C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "['customers.csv',\n",
+       " 'DATABASE_SCHEMA.txt',\n",
+       " 'delivery_events.csv',\n",
+       " 'drivers.csv',\n",
+       " 'driver_monthly_metrics.csv',\n",
+       " 'facilities.csv',\n",
+       " 'fuel_purchases.csv',\n",
+       " 'loads.csv',\n",
+       " 'maintenance_records.csv',\n",
+       " 'routes.csv',\n",
+       " 'safety_incidents.csv',\n",
+       " 'trailers.csv',\n",
+       " 'trips.csv',\n",
+       " 'trucks.csv',\n",
+       " 'truck_utilization_metrics.csv']"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# path to data\n",
+    "path = kagglehub.dataset_download(\"yogape/logistics-operations-database\")\n",
+    "\n",
+    "print(\"Path to dataset files:\", path)\n",
+    "os.listdir(path)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "2a389315-8f0a-40db-bb4c-af43ef766e6d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "database_schema_path = r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\DATABASE_SCHEMA.txt\"\n",
+    "\n",
+    "def load_database_schema():\n",
+    "    with open(database_schema_path, \"r\", encoding='utf-8') as file:\n",
+    "        return file.read()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "72d05206-7e34-4f74-ab22-9e8c96fd5407",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_customers():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\customers.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c82a0266-1f7c-48d2-8848-c267aebe3acd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_delivery_events():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\delivery_events.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "a9b81e03-b632-4ab8-8de1-a6041ce7874d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_drivers():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\drivers.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "61621f7f-6f39-4c5e-bd67-30f1f91eff76",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_driver_monthly_metrics():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\driver_monthly_metrics.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "f5192255-fb19-4edc-bb67-6922644093a9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_facilities():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\facilities.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "4c0787df-61bb-4976-8637-bcdc406d6d88",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_fuel_purchases():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\fuel_purchases.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "e0abc326-890c-4ceb-bd78-bf526597da3a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_loads():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\loads.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "a523cb8f-adde-4baf-93b9-3c96f2ab942b",
+   "metadata": {
+    "editable": true,
+    "slideshow": {
+     "slide_type": ""
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "def load_maintenance_records():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\maintenance_records.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "b827d140-61e6-4ef4-9092-3f149cb6990b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_routes():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\routes.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "4a0bffb0-5b74-49fb-b0f7-901d71c2015a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_trailers():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\trailers.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "6a02c761-eb19-4884-b259-ffbbd53d5a8f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_trips():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\trips.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "5dcc632c-f3f4-4f43-a457-72faae42dbc0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_safety_incidents():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\safety_incidents.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "ebcab08f-e1be-4ac7-8316-c9cf0b30a225",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_trucks():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\trucks.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "30b77012-c9a8-4186-b52a-9d2f9c8de135",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load_truck_utilization_metrics():\n",
+    "    return pd.read_csv(r\"C:\\Users\\jinfe\\.cache\\kagglehub\\datasets\\yogape\\logistics-operations-database\\versions\\1\\truck_utilization_metrics.csv\")\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
