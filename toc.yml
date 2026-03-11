@@ -1,0 +1,13 @@
+format: jb-book
+root: index
+chapters:
+  - file: 01. preprocessing_data
+  - file: 02. feature_relationship
+  - file: 03. LogisticRegression_model
+  - file: 04. GridSearchCV_model
+  - file: 05. RandomForest_model
+  - file: 06. Data
+
+
+
+

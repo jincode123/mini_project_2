@@ -1,0 +1,16 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: mini-project-2
+  title: Mini Project 2 - Supervised Learning ML Models
+  toc: toc.yml
+    
+    
+site:
+  template: article-theme
+  options:
+    hide_code_cell_input: true
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
+
