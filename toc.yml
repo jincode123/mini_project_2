@@ -1,6 +1,7 @@
 format: jb-book
 root: index
 chapters:
+  - file: 00. business_case
   - file: 01. preprocessing_data
   - file: 02. feature_relationship
   - file: 03. LogisticRegression_model

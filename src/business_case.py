@@ -49,12 +49,6 @@ df
 # In[5]:
 
 
-df = df[df["event_type"] == "Delivery"]
-
-
-# In[6]:
-
-
 # Calculating the percentage of missing values for each column
 missing_data = df.isnull().sum()
 missing_percentage = (missing_data[missing_data > 0] / df.shape[0]) * 100
@@ -79,14 +73,14 @@ plt.xlabel('Percentages (%)', fontsize=16)
 plt.show()
 
 
-# In[7]:
+# In[6]:
 
 
 # Extracting rows with missing values in 'CustomerID' or 'Description' columns
 df[df['is_home_terminal'].isnull() | df['years_experience'].isnull()| df['efficiency_ratio'].isnull()| df['truck_age_at_event'].isnull()]
 
 
-# In[8]:
+# In[7]:
 
 
 # Removing rows with missing values in 'CustomerID' and 'Description' columns
@@ -94,7 +88,7 @@ df = df.dropna(subset=['is_home_terminal', 'years_experience','efficiency_ratio'
 df.head()
 
 
-# In[9]:
+# In[8]:
 
 
 # 1. Count UNIQUE trip_ids for each facility_id
@@ -105,7 +99,7 @@ facility_trip_data = df.groupby('facility_id')['trip_id'].nunique().reset_index(
 df = df.merge(facility_trip_data, on='facility_id', how='left')
 
 
-# In[10]:
+# In[9]:
 
 
 # 1. Get the unique list of facilities and their trip counts
@@ -122,7 +116,9 @@ print("Top 10 Busiest Facilities (By Trip Volume):")
 print(top_10_facilities)
 
 
-# In[11]:
+# # Logistic Operation on-time-delivery rate at 55%
+
+# In[10]:
 
 
 # Group by state to see On-Time Percentage vs Trip Count
@@ -133,6 +129,12 @@ state_analysis = df.groupby('location_state').agg(
 
 # Sort by total_trips to see if the top states have the lowest on_time_rate
 print(state_analysis.sort_values('on_time_rate', ascending=False))
+
+
+# In[11]:
+
+
+print(state_analysis['on_time_rate'].mean())
 
 
 # In[12]:
